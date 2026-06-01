@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marwan Hazem | Portfolio</title>
+    <style>
+        /* نظام الألوان والتصميم المستوحى من الـ Portfolio الرايق */
+        :root {
+            --bg-color: #080808;
+            --second-bg-color: #131313;
+            --text-color: white;
+            --main-color: #8a2be2; /* اللون الموف اللامع */
+            --sub-color: #00eeff;  /* السيان الهادي للمؤثرات */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        span {
+            color: var(--main-color);
+        }
+
+        /* Navbar الشيك */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 9%;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            border-bottom: 1px solid rgba(138, 43, 226, 0.1);
+        }
+
+        .logo {
+            font-size: 1.7rem;
+            font-weight: 700;
+            cursor: default;
+            color: white;
+        }
+
+        nav a {
+            font-size: 1.1rem;
+            color: white;
+            margin-left: 2.5rem;
+            transition: .3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--main-color);
+            text-shadow: 0 0 10px var(--main-color);
+        }
+
+        /* السكاشن الأساسية */
+        section {
+            min-height: 100vh;
+            padding: 10rem 9% 2rem;
+        }
+
+        /* Hero Section مع الأنيميشن */
+        .hero-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: radial-gradient(circle at 50% 50%, rgba(138, 43, 226, 0.15) 0%, transparent 60%);
+        }
+
+        .hero-content h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin: 0.5rem 0;
+            text-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+        }
+
+        .hero-content h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            max-width: 750px; /* وسعنا السطر شوية عشان النبذة تظهر مرتاحة زي الصورة */
+            margin: 0 auto 2rem;
+            color: #b2b2b2;
+            line-height: 1.7;
+        }
+
+        /* الأزرار والحركات */
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.8rem;
+            border-radius: 4rem;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: .5s ease;
+            cursor: pointer;
+        }
+
+        .primary-btn {
+            background: var(--main-color);
+            color: white;
+            box-shadow: 0 0 15px var(--main-color);
+        }
+
+        .primary-btn:hover {
+            background: transparent;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            box-shadow: none;
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: white;
+            border: 2px solid var(--main-color);
+        }
+
+        .secondary-btn:hover {
+            background: var(--main-color);
+            box-shadow: 0 0 15px var(--main-color);
+        }
+
+        /* سيكشن المهارات بتأثير الكروت المتوهجة */
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .skill-category {
+            background: var(--second-bg-color);
+            padding: 3rem 2rem;
+            border-radius: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: .5s ease;
+        }
+
+        .skill-category:hover {
+            border-color: var(--main-color);
+            transform: scale(1.03);
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.2);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--sub-color);
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category ul li {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: #dcdcdc;
+        }
+
+        /* كروت المشاريع الاحترافية Hover Effects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            position: relative;
+            border-radius: 2rem;
+            box-shadow: 0 0 1rem rgba(0,0,0,0.5);
+            overflow: hidden;
+            display: flex;
+            background: var(--second-bg-color);
+            height: 280px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .project-card img {
+            width: 100%;
+            object-fit: cover;
+            transition: .5s ease;
+            opacity: 0.6;
+        }
+
+        .project-card:hover img {
+            transform: scale(1.1);
+        }
+
+        /* حركة صعود البيانات عند الوقوف على الكارت */
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.1), var(--main-color));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            transform: translateY(100%);
+            transition: .5s ease;
+        }
+
+        .project-card:hover .project-info {
+            transform: translateY(0);
+        }
+
+        .project-info h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .project-info p {
+            font-size: 0.95rem;
+            margin: .5rem 0 1rem;
+            line-height: 1.4;
+        }
+
+        .tech-tags span {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            margin: 0 0.2rem;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: white;
+            border-radius: 50%;
+            margin-top: 1rem;
+            color: var(--bg-color);
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: .3s;
+        }
+
+        .project-links a:hover {
+            transform: scale(1.1);
+            background: var(--sub-color);
+        }
+
+        /* تنسيق سيكشن التواصل الجديد المتروق */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            background: var(--second-bg-color);
+            padding: 3rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+
+        .contact-container h3 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .contact-desc {
+            font-size: 1.1rem;
+            color: #b2b2b2;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            transition: 0.3s ease;
+        }
+
+        .contact-item:hover {
+            border-color: var(--main-color);
+            background: rgba(138, 43, 226, 0.05);
+            transform: translateX(10px);
+        }
+
+        .icon-box {
+            padding: 1rem;
+            background: rgba(138, 43, 226, 0.1);
+            color: var(--main-color);
+            border-radius: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-details h4 {
+            font-size: 0.9rem;
+            color: #777;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-details p, .contact-details a {
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 500;
+            margin-top: 0.2rem;
+            transition: 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: var(--sub-color);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Marwan<span>.Hazem</span></div>
+        <nav>
+            <a href="#hero">Home</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h3>Hi, I'm</h3>
+            <h1>Marwan Hazem</h1>
+            <h2>Software Engineer | .NET Developer | Full Stack</h2>
+            <p>I study Software Development at MOUSAT. I focus on building scalable software solutions and writing clean, optimized code. My passion for problem-solving is driven by low-level development with C++ and building high-level architecture with .NET technologies.</p>
+            <div class="buttons">
+                <a href="#contact" class="btn primary-btn">Contact Me</a>
+                <a href="#" class="btn secondary-btn" target="_blank">View Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <div class="skills-container">
+            <div class="skill-category">
+                <h3>Backend & Desktop</h3>
+                <ul>
+                    <li>C# / .NET Framework</li>
+                    <li>WPF (XAML)</li>
+                    <li>ASP.NET Core MVC</li>
+                    <li>Entity Framework Core</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Core Languages</h3>
+                <ul>
+                    <li>C++</li>
+                    <li>OOP / Data Structures</li>
+                    <li>Algorithms</li>
+                    <li>SQL Server / T-SQL</li>
+                </ul>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Systems</h3>
+                <ul>
+                    <li>Git & GitHub</li>
+                    <li>Visual Studio</li>
+                    <li>Database Management</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+   <section id="projects">
+        <h2 class="section-title">Recent <span>Projects</span></h2>
+        <div class="projects-grid">
+            
+            <!-- Project 1: Botify -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&w=500&q=80" alt="Botify">
+                <div class="project-info">
+                    <h3>Botify</h3>
+                    <p>An AI-integrated chatbot designed for smart sales automation, currently being tested in the Egyptian market.</p>
+                    <div class="tech-tags"><span>AI</span><span>C#</span><span>.NET</span></div>
+                    <div class="project-links"><a href="#" target="_blank">Code</a></div>
+                </div>
+            </div>
+
+            <!-- Project 2: Clinic System -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=500&q=80" alt="Clinic System">
+                <div class="project-info">
+                    <h3>Clinic System</h3>
+                    <p>A desktop application for managing medical clinic reservations, patient records, and doctor schedules smoothly.</p>
+                    <div class="tech-tags"><span>C#</span><span>WPF</span><span>SQL</span></div>
+                    <div class="project-links"><a href="#" target="_blank">Code</a></div>
+                </div>
+            </div>
+
+            <!-- Project 3: OmniMarket Hub -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=500&q=80" alt="OmniMarket Hub">
+                <div class="project-info">
+                    <h3>OmniMarket Hub</h3>
+                    <p>An integrated store and market management system handling sales, inventory tracking, and billing operations.</p>
+                    <div class="tech-tags"><span>.NET</span><span>EF Core</span><span>C#</span></div>
+                    <div class="project-links"><a href="#" target="_blank">Code</a></div>
+                </div>
+            </div>
+
+            <!-- Project 4: Library Management System -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1506880018603-83d5b814b5a6?auto=format&fit=crop&w=500&q=80" alt="Library Management System">
+                <div class="project-info">
+                    <h3>Library Management System</h3>
+                    <p>A comprehensive software solution to manage books, student borrowings, return deadlines, and logs smoothly.</p>
+                    <div class="tech-tags"><span>C#</span><span>Desktop</span><span>DB</span></div>
+                    <div class="project-links"><a href="#" target="_blank">Code</a></div>
+                </div>
+            </div>
+
+            <!-- Project 5: Advanced WPF & Logic Lab (Learn Hub) -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80" alt="WPF Learn Lab">
+                <div class="project-info">
+                    <h3>WPF & Core Logic Lab</h3>
+                    <p>A dedicated repository focusing on explicit data handling, building custom desktop UI structures, and refining fundamental programming practices.</p>
+                    <div class="tech-tags"><span>WPF</span><span>XAML</span><span>C# Basics</span></div>
+                    <div class="project-links"><a href="#" target="_blank">Code</a></div>
+                </div>
+            </div>
+
+            <!-- Project 6: All-Projects Architecture Hub -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=500&q=80" alt="All Projects Hub">
+                <div class="project-info">
+                    <h3>All-Projects Hub</h3>
+                    <p>A comprehensive master repository containing a diverse suite of software engineering experiments, foundational algorithms, and technical applications.</p>
+                    <div class="tech-tags"><span>C++</span><span>.NET Architecture</span><span>Git</span></div>
+                    <div class="project-links"><a href="#" target="_blank">Code</a></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        
+        <div class="contact-container">
+            <h3>Contact Information</h3>
+            <p class="contact-desc">Feel free to reach out! Whether you have a question, a project idea, or just want to say hello, I'll do my best to get back to you as soon as possible.</p>
+            
+            <div class="contact-list">
+                <!-- الإيميل -->
+                <div class="contact-item">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>marwanhazem12789@gmail.com</p>
+                    </div>
+                </div>
+
+                <!-- الموقع -->
+                <div class="contact-item">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>Location</h4>
+                        <p>Giza, Egypt</p>
+                    </div>
+                </div>
+
+                <!-- جيتهاب -->
+                <div class="contact-item">
+                    <div class="icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                    </div>
+                    <div class="contact-details">
+                        <h4>GitHub</h4>
+                        <a href="https://github.com/marwanhazem12789-lgtm" target="_blank">marwanhazem12789-lgtm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Marwan Hazem. Crafted with passion.</p>
+    </footer>
+
+</body>
+</html>
